@@ -31,6 +31,7 @@ interface Props {
 }
 
 const actionForOffset = (dx: number, dy: number): SwipeAction | null => {
+  'worklet';
   if (Math.abs(dx) > HORIZONTAL_THRESHOLD && Math.abs(dx) > Math.abs(dy)) {
     return dx > 0 ? 'keep' : 'delete';
   }
@@ -41,6 +42,7 @@ const actionForOffset = (dx: number, dy: number): SwipeAction | null => {
 };
 
 const targetForAction = (action: SwipeAction) => {
+  'worklet';
   switch (action) {
     case 'keep':
       return { x: SWIPE_OUT_DISTANCE, y: 0 };
